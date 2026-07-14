@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VANTIQ - Your Tools for Success</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-beige: #FFF1CC;
+      --accent-orange: #FFB301;
+      --black: #1a1a1a;
+      --white: #ffffff;
+      --shadow-orange: rgba(255, 179, 1, 0.3);
+      --shadow-dark: rgba(0,0,0,0.15);
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg-beige);
+      color: var(--black);
+      overflow-x: hidden;
+      direction: rtl;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255, 241, 204, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--accent-orange);
+      padding: 10px 0;
+      transition: all 0.3s ease;
+    }
+
+    .header-scrolled {
+      background: rgba(255, 241, 204, 0.98);
+      box-shadow: 0 4px 20px var(--shadow-orange);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: auto;
+    }
+
+    .logo-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 2px solid var(--accent-orange);
+      box-shadow: 0 2px 8px var(--shadow-orange);
+    }
+
+    .brand-text {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .brand-van { color: var(--black); }
+    .brand-tiq { color: var(--accent-orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--black);
+      font-weight: 600;
+      font-size: 14px;
+      position: relative;
+      padding: 4px 0;
+      transition: color 0.3s;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-orange);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover { color: var(--accent-orange); }
+    .nav-link:hover::after { width: 100%; }
+
+    .btn-buy-header {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 8px 22px;
+      border-radius: 50px;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-buy-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: var(--accent-orange);
+      transition: left 0.4s ease;
+      z-index: 0;
+    }
+
+    .btn-buy-header:hover::before { left: 0; }
+    .btn-buy-header:hover {
+      color: var(--black);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--shadow-orange);
+    }
+    .btn-buy-header span { position: relative; z-index: 1; }
+
+    /* ===== HERO / HOME ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.05;
+      background-image: radial-gradient(circle, var(--black) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .hero-content {
+      max-width: 1000px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      color: var(--black);
+    }
+
+    .hero-text h1 span {
+      color: var(--accent-orange);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-text h1 span::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0; right: 0;
+      height: 8px;
+      background: var(--accent-orange);
+      opacity: 0.25;
+      border-radius: 4px;
+      z-index: -1;
+    }
+
+    .slogan {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 28px;
+      font-weight: 600;
+    }
+
+    .about-text {
+      font-size: 15px;
+      color: #444;
+      line-height: 2;
+      margin-bottom: 36px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent-orange);
+      color: var(--black);
+      border: none;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 5px 18px var(--shadow-orange);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(255, 179, 1, 0.4);
+    }
+
+    .btn-primary:active { transform: scale(0.98); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--black);
+      border: 2px solid var(--black);
+      padding: 12px 32px;
+      border-radius: 50px;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      animation: bounce 2s infinite;
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0.5;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ===== PRODUCTS SECTION (above FAQ) ===== */
+    .products-section {
+      padding: 80px 24px;
+      background: var(--white);
+    }
+
+    .products-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 50px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--bg-beige);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid transparent;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .product-card:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px var(--shadow-orange);
+    }
+
+    .product-card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--accent-orange);
+    }
+
+    .product-card-body {
+      padding: 24px;
+    }
+
+    .product-card-body h3 {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .product-card-body p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .product-card-price {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .product-card-price .old {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .product-card-price .new {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--black);
+    }
+
+    /* ===== PRODUCT DETAIL PAGE ===== */
+    .product-page {
+      padding: 100px 24px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .product-visual {
+      position: sticky;
+      top: 100px;
+    }
+
+    .product-img-large {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+      border: 5px solid var(--white);
+      transition: all 0.5s ease;
+    }
+
+    .product-img-large:hover {
+      transform: scale(1.02);
+      box-shadow: 0 35px 70px rgba(255, 179, 1, 0.2);
+    }
+
+    .product-info h2 {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .product-info .subtitle {
+      font-size: 18px;
+      color: var(--accent-orange);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .product-desc {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+
+    .price-box {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+      border: 2px solid var(--accent-orange);
+    }
+
+    .price-box .old {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .price-box .new {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--black);
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+      border-bottom: 1px dashed rgba(0,0,0,0.08);
+      transition: all 0.3s;
+    }
+
+    .features-list li:hover {
+      padding-right: 8px;
+      color: var(--accent-orange);
+    }
+
+    .features-list li:last-child { border-bottom: none; }
+
+    .check-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--accent-orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black);
+      font-weight: 900;
+      font-size: 12px;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .features-list li:hover .check-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    /* ===== ORDER FORM ===== */
+    .order-section {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 20px;
+      border: 2px solid var(--accent-orange);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .order-section h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: var(--black);
+      text-align: center;
+    }
+
+    .vodafone-info {
+      background: var(--bg-beige);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+      border: 2px dashed var(--accent-orange);
+    }
+
+    .vodafone-info p {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 6px;
+    }
+
+    .vodafone-info .number {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--black);
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .vodafone-info .copy-btn {
+      background: var(--accent-orange);
+      color: var(--black);
+      border: none;
+      padding: 6px 16px;
+      border-radius: 8px;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: all 0.3s;
+    }
+
+    .vodafone-info .copy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 3px 10px var(--shadow-orange);
+    }
+
+    .vodafone-warning {
+      color: #d32f2f;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 8px;
+      padding: 8px;
+      background: rgba(211, 47, 47, 0.08);
+      border-radius: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--black);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      transition: all 0.3s;
+      background: #fafafa;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-orange);
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(255, 179, 1, 0.15);
+    }
+
+    .form-group textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 16px;
+      border-radius: 14px;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      cursor: pointer;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      margin-top: 8px;
+    }
+
+    .btn-submit::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 0; height: 0;
+      background: var(--accent-orange);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: 0;
+    }
+
+    .btn-submit:hover::after {
+      width: 400px; height: 400px;
+    }
+
+    .btn-submit:hover {
+      color: var(--black);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px var(--shadow-orange);
+    }
+
+    .btn-submit span { position: relative; z-index: 1; }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 9999;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.15) rotate(-5deg);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    .whatsapp-float svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* ===== FAQ ===== */
+    .faq {
+      padding: 80px 24px;
+      background: var(--white);
+    }
+
+    .faq-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--bg-beige);
+      border-radius: 14px;
+      margin-bottom: 14px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .faq-item:hover { border-color: var(--accent-orange); }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: right;
+      transition: all 0.3s;
+    }
+
+    .faq-question:hover { color: var(--accent-orange); }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent-orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 14px;
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      flex-shrink: 0;
+      margin-right: 10px;
+    }
+
+    .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 24px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 0 24px 20px;
+    }
+
+    .faq-answer p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 50px 24px 25px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo .van { color: var(--white); }
+    .footer-logo .tiq { color: var(--accent-orange); }
+
+    .footer-slogan {
+      font-size: 15px;
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    .footer-divider {
+      width: 50px;
+      height: 3px;
+      background: var(--accent-orange);
+      margin: 0 auto 18px;
+      border-radius: 2px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 900px) {
+      .product-page { grid-template-columns: 1fr; }
+      .product-visual { position: relative; top: 0; }
+      .hero-text h1 { font-size: 28px; }
+      .about-text { font-size: 14px; }
+      .nav-links { display: none; }
+      .product-info h2 { font-size: 26px; }
+      .form-row { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .whatsapp-float { width: 52px; height: 52px; bottom: 16px; left: 16px; }
+      .whatsapp-float svg { width: 26px; height: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <nav class="nav-links">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#products" class="nav-link">Products</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#product" class="btn-buy-header"><span>Buy Now</span></a>
+    </nav>
+    <div class="logo-section">
+      <div class="brand-text">
+        <span class="brand-van">VAN</span><span class="brand-tiq">TIQ</span>
+      </div>
+      <img src="https://i.postimg.cc/bwvDHYW3/20260713-235731.png" alt="VANTIQ Logo" class="logo-img">
+    </div>
+  </div>
+</header>
+
+<!-- ===== PAGE 1: HOME / ABOUT ===== -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-text fade-in">
+      <h1>كل <span style="color:var(--accent-orange);">الأدوات</span> التي<br>تحتاجها للنجاح</h1>
+      <p class="slogan">VANTIQ - Your Partner in Success</p>
+      <p class="about-text">
+        في VANTIQ، نؤمن بأن كل شخص يستحق الأدوات التي تساعده على التألق في مجاله.
+        نحن نبني نظاماً متكاملاً من الأدوات والحلول التي تلبي احتياجات مختلف الفئات،
+        ونسعى دائماً لتوسيع مجموعتنا لتشمل كل ما يحتاجه المستخدم لتحقيق أهدافه.
+        مهمتنا هي تمكينك من الوصول إلى النجاح بأقل جهد وأعلى جودة.
+      </p>
+      <div class="hero-cta">
+        <a href="#products" class="btn-primary">تصفح المنتجات</a>
+        <a href="#faq" class="btn-secondary">اعرف المزيد</a>
+      </div>
+    </div>
+  </div>
+  <a href="#products" class="scroll-indicator">
+    <span>↓</span>
+    <span>اكتشف المنتجات</span>
+  </a>
+</section>
+
+<!-- ===== PRODUCTS SECTION (above FAQ) ===== -->
+<section class="products-section" id="products">
+  <div class="products-inner">
+    <h2 class="section-title fade-in">منتجاتنا</h2>
+    <p class="section-subtitle fade-in">اكتشف أدوات VANTIQ المميزة</p>
+
+    <div class="products-grid">
+      <!-- Available Product -->
+      <a href="#product" class="product-card fade-in">
+        <img src="https://i.postimg.cc/024Mn1vq/file-000000007a1071f492bd54fcea213105.png" alt="VANTIQ Creator Kit" class="product-card-img">
+        <div class="product-card-body">
+          <h3>VANTIQ Creator Kit</h3>
+          <p>الملف الذي يحتاجه كل صانع محتوى. هوكات فيروسية، أفكار محتوى، برومبتات AI، وأدوات تحليل احترافية.</p>
+          <div class="product-card-price">
+            <span class="old">400 ج</span>
+            <span class="new">285 ج</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE 2: PRODUCT DETAIL + ORDER FORM ===== -->
+<section class="product-page" id="product">
+  <div class="product-visual fade-in">
+    <img src="https://i.postimg.cc/024Mn1vq/file-000000007a1071f492bd54fcea213105.png" alt="VANTIQ Creator Kit" class="product-img-large">
+  </div>
+  <div class="product-info fade-in">
+    <h2>VANTIQ Creator Kit</h2>
+    <div class="subtitle">الملف الذي يحتاجه كل صانع محتوى</div>
+
+    <p class="product-desc">
+      VANTIQ Creator Kit هو حزمة شاملة تجمع كل ما يحتاجه صانع المحتوى في مكان واحد.
+      سواء كنت مبتدئاً أو محترفاً، ستجد في هذا الملف أدوات تساعدك على إنتاج محتوى
+      احترافي، جذب انتباه جمهورك، وتحليل أدائك بشكل دقيق. كل ذلك بسعر لا يُقاوم!
+    </p>
+
+    <div class="price-box">
+      <span class="old">400 ج</span>
+      <span class="new">285 ج</span>
+    </div>
+
+    <ul class="features-list">
+      <li><span class="check-icon">✓</span> أكثر من 950 ڤايرل هوك</li>
+      <li><span class="check-icon">✓</span> أكثر من 1000 فكرة محتوى</li>
+      <li><span class="check-icon">✓</span> مكتبة برومبتات ذكاء اصطناعي</li>
+      <li><span class="check-icon">✓</span> موارد احترافية لصنّاع المحتوى</li>
+      <li><span class="check-icon">✓</span> نظام متكامل للنمو وزيادة المتابعين</li>
+      <li><span class="check-icon">✓</span> مكتبة تصاميم وملفات احترافية</li>
+      <li><span class="check-icon">✓</span> أدوات جاهزة للاستخدام</li>
+      <li><span class="check-icon">✓</span> أدوات تحليل الحساب ومقطع الريلز</li>
+      <li><span class="check-icon">✓</span> والعديد من الأدوات والمميزات الأخرى...</li>
+    </ul>
+
+    <!-- ORDER FORM -->
+    <div class="order-section">
+      <h3>🛒 اطلب الآن</h3>
+
+      <div class="vodafone-info">
+        <p>💳 حوّل المبلغ عبر فودافون كاش:</p>
+        <p class="number">01022605696 <button class="copy-btn" onclick="copyNumber()">نسخ</button></p>
+        <p class="vodafone-warning">⚠️ ممنوع الرن أو التواصل واتساب نهائياً</p>
+      </div>
+
+      <form action="https://api.web3forms.com/submit" method="POST" id="orderForm">
+        <input type="hidden" name="access_key" value="5c2c2901-7f52-4e70-8fb9-6c02459729b9">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">الاسم الأول</label>
+            <input type="text" id="fname" name="fname" placeholder="محمد" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">الاسم الأخير</label>
+            <input type="text" id="lname" name="lname" placeholder="أحمد" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">البريد الإلكتروني</label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">رقم الهاتف / واتساب</label>
+          <input type="tel" id="phone" name="phone" placeholder="01xxxxxxxxx" required>
+        </div>
+
+        <div class="form-group">
+          <label for="payment">طريقة الدفع</label>
+          <select id="payment" name="payment" required>
+            <option value="">اختر طريقة الدفع</option>
+            <option value="vodafone">فودافون كاش</option>
+            <option value="instapay">إنستا باي</option>
+            <option value="wallet">محفظة إلكترونية أخرى</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">ملاحظات (اختياري)</label>
+          <textarea id="notes" name="notes" placeholder="أي ملاحظات إضافية..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit"><span>✅ تأكيد الطلب - 285 ج</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <h2 class="section-title fade-in">الأسئلة الشائعة</h2>
+    <p class="section-subtitle fade-in">كل ما تريد معرفته عن المنتج</p>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>ما هو VANTIQ Creator Kit؟</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p>هو ملف شامل يحتوي على جميع الأدوات والموارد التي يحتاجها صانع المحتوى للنجاح، من هوكات فيروسية وأفكار محتوى إلى برومبتات AI وأدوات تحليل.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>هل الملف يصلح لجميع المنصات؟</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p>نعم، المحتوى والأدوات مصممة لتعمل على جميع منصات التواصل الاجتماعي بما فيها إنستجرام، تيك توك، يوتيوب، وغيرها.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>كيف أحصل على الملف بعد الدفع؟</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p>بعد إتمام عملية الشراء، ستصلك رسالة على البريد الإلكتروني أو الواتساب تحتوي على رابط التحميل مباشرة.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>هل يوجد تحديثات مجانية للملف؟</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p>نعم، يحصل جميع المشترين على التحديثات المستقبلية للملف بشكل مجاني.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>ما هي طرق الدفع المتاحة؟</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p>نقبل الدفع عبر فودافون كاش، إنستا باي، أو أي محفظة إلكترونية أخرى. التواصل مباشرة لإتمام عملية الشراء.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-logo">
+    <span class="van">VAN</span><span class="tiq">TIQ</span>
+  </div>
+  <p class="footer-slogan">كل الأدوات التي تحتاجها للنجاح</p>
+  <div class="footer-divider"></div>
+  <p class="footer-copy">© 2026 VANTIQ. جميع الحقوق محفوظة.</p>
+</footer>
+
+<!-- ===== WHATSAPP FLOAT BUTTON ===== -->
+<a href="https://wa.me/201022449197" target="_blank" class="whatsapp-float" title="تواصل عبر واتساب">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+      header.classList.add('header-scrolled');
+    } else {
+      header.classList.remove('header-scrolled');
+    }
+  });
+
+  // FAQ Toggle
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!isActive) {
+      item.classList.add('active');
+    }
+  }
+
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Copy Vodafone number
+  function copyNumber() {
+    navigator.clipboard.writeText('01022605696').then(() => {
+      alert('تم نسخ الرقم! 📋');
+    });
+  }
+</script>
+
+</body>
+</html>
